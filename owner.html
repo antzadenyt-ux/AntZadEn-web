@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AntZadEn • Owner Panel</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    color:white;
+    background:
+        radial-gradient(circle at top,#173b70,transparent 40%),
+        #070b15;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:30px 20px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#63a8ff;
+}
+
+.badge{
+    background:#ffd166;
+    color:#201900;
+    padding:8px 13px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.card{
+    background:#121a2c;
+    border:1px solid #293654;
+    border-radius:18px;
+    padding:22px;
+}
+
+.card h2{
+    margin-top:0;
+}
+
+.card p{
+    color:#9aa8c4;
+    line-height:1.5;
+}
+
+button{
+    border:0;
+    padding:11px 14px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    background:#63a8ff;
+    color:#07101d;
+}
+
+button:hover{
+    opacity:.85;
+}
+
+.danger{
+    background:#ff6575;
+    color:white;
+}
+
+.green{
+    color:#50e38a;
+}
+
+.gold{
+    color:#ffd166;
+}
+
+@media(max-width:750px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .header{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<div class="logo">
+✦ <span>AntZadEn</span> Owner
+</div>
+
+<div class="badge">
+👑 OWNER
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h1>
+👑 Owner Dashboard
+</h1>
+
+<p>
+Vítej v administraci svého webu AntZadEn.
+</p>
+
+<p class="green">
+● Web je ONLINE
+</p>
+
+</div>
+
+
+<br>
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<h2>📰 Novinky</h2>
+
+<p>
+Správa novinek na veřejném webu.
+</p>
+
+<button onclick="alert('Editor novinek zatím připravujeme.')">
+Otevřít
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>🐾 Mazlíčci</h2>
+
+<p>
+Úprava informací o mazlíčcích.
+</p>
+
+<button onclick="alert('Editor mazlíčků zatím připravujeme.')">
+Otevřít
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>▶️ YouTube</h2>
+
+<p>
+Správa YouTube části webu.
+</p>
+
+<button onclick="alert('YouTube nastavení zatím připravujeme.')">
+Otevřít
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>👥 Uživatelé</h2>
+
+<p>
+Správa uživatelů a jejich rolí.
+</p>
+
+<button onclick="alert('Správa uživatelů zatím připravujeme.')">
+Otevřít
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>🛡️ Role</h2>
+
+<p>
+Nováček • Moderátor • Admin • Owner
+</p>
+
+<button onclick="alert('Správa rolí zatím připravujeme.')">
+Otevřít
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>⚙️ Nastavení</h2>
+
+<p>
+Nastavení veřejného webu.
+</p>
+
+<button onclick="alert('Nastavení zatím připravujeme.')">
+Otevřít
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>🌐 Veřejný web</h2>
+
+<p>
+Otevři veřejnou verzi AntZadEn.
+</p>
+
+<button onclick="location.href='index.html'">
+Otevřít web
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>💻 GitHub</h2>
+
+<p>
+Otevři repository a upravuj soubory.
+</p>
+
+<button onclick="location.href='https://github.com/antzadenyt-ux/AntZadEn-web'">
+GitHub
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>⚠️ Nebezpečná zóna</h2>
+
+<p>
+Citlivé akce Ownera.
+</p>
+
+<button class="danger"
+onclick="alert('Tato akce je zatím deaktivována.')">
+Nebezpečná zóna
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
