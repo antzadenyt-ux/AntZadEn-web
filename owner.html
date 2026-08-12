@@ -333,7 +333,10 @@ Nebezpečná zóna
 const SUPABASE_URL = "https://xsgvxblcyzpermqdotes.supabase.co";
 const SUPABASE_KEY = "sb_publishable_wDBejYnJcuhy9tFpOzsUkg_5TKA7lVg";
 
-var supabase = null;
+var supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
    
 async function loadPets() {
     const { data, error } = await supabase
