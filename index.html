@@ -70,5 +70,32 @@ if(localStorage.getItem('light')==='true')document.body.classList.add('light');
 function showToast(t){$('toastText').textContent=t;$('toast').style.display='flex';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>$('toast').style.display='none',1900)}
 let saved=localStorage.getItem('demoRole');if(saved)applyRole(saved);
 </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "xsgvxblcyzpermqdotes";
+const SUPABASE_KEY = " sb_publishable_wDBejYnJcuhy9tFpOzsUkg_5TKA7lVg";
+
+const supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+async function loadPets() {
+    const { data, error } = await supabase
+        .from("pets")
+        .select("*")
+        .order("id");
+
+    if (error) {
+        console.error("Chyba Supabase:", error);
+        return;
+    }
+
+    console.log("Zvířata z databáze:", data);
+}
+
+loadPets();
+</script>
 </body>
 </html>
