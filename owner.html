@@ -339,6 +339,30 @@ const supabaseClient = window.supabase.createClient(
 );
 
 async function loadPets() {
+    async function editPet(id) {
+    const newName = prompt("Nové jméno mazlíčka:");
+    if (newName === null) return;
+
+    const newType = prompt("Nový druh mazlíčka:");
+    if (newType === null) return;
+
+    const { error } = await supabaseClient
+        .from("pets")
+        .update({
+            name: newName,
+            type: newType
+        })
+        .eq("id", id);
+
+    if (error) {
+        console.error("Chyba při úpravě:", error);
+        alert("❌ Nepodařilo se uložit změny.");
+        return;
+    }
+
+    alert("✅ Informace uloženy!");
+    loadPets();
+}
     const { data, error } = await supabaseClient
         .from("pets")
         .select("*")
