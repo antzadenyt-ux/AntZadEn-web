@@ -339,6 +339,7 @@ const supabaseClient = window.supabase.createClient(
 );
 
 async function loadPets() {
+    
     async function editPet(id) {
     const newName = prompt("Nové jméno mazlíčka:");
     if (newName === null) return;
