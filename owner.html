@@ -177,10 +177,10 @@ Otevřít
 <h2>🐾 Mazlíčci</h2>
 
 <p>
-Úprava informací o mazlíčcích.
+Správa mazlíčků v databázi.
 </p>
 
-<button onclick="alert('Editor mazlíčků zatím připravujeme.')">
+<button onclick="openPetsEditor()">
 Otevřít
 </button>
 
@@ -296,7 +296,38 @@ Nebezpečná zóna
 
 </div>
     
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <div id="petsEditor" style="
+    display:none;
+    margin-top:25px;
+    background:#121a2c;
+    border:1px solid #293654;
+    border-radius:18px;
+    padding:22px;
+">
+
+    <h2>🐾 Správa mazlíčků</h2>
+
+    <div id="petsList">
+        Načítám mazlíčky...
+    </div>
+
+    <hr style="margin:20px 0;border-color:#293654;">
+
+    <h3>➕ Přidat mazlíčka</h3>
+
+    <input id="petName"
+        placeholder="Jméno mazlíčka"
+        style="padding:10px;border-radius:8px;border:0;margin-right:8px;">
+
+    <input id="petType"
+        placeholder="Druh"
+        style="padding:10px;border-radius:8px;border:0;margin-right:8px;">
+
+    <button onclick="addPet()">
+        Přidat
+    </button>
+
+</div>
 
 <script>
 const SUPABASE_URL = "https://xsgvxblcyzpermqdotes.supabase.co";
