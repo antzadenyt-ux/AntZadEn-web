@@ -296,7 +296,7 @@ Nebezpečná zóna
 
 </div>
     
-  <div id="petsEditor" style="
+    <div id="petsEditor" style="
     display:none;
     margin-top:25px;
     background:#121a2c;
@@ -323,43 +323,84 @@ Nebezpečná zóna
         placeholder="Druh"
         style="padding:10px;border-radius:8px;border:0;margin-right:8px;">
 
-    <button onclick="addPet()">
-        Přidat
-    </button>
+    <button onclick="addPet()">Přidat</button>
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"></script>
+
 <script>
 const SUPABASE_URL = "https://xsgvxblcyzpermqdotes.supabase.co";
-const SUPABASE_KEY = "sb_publishable_wDBejYnJcuhy9tFpOzsUkg_5TKA7lVg";
+const SUPABASE_KEY = "TVŮJ_PUBLISHABLE_KEY";
 
-var supabase = window.supabase.createClient(
+const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
-   
+
 async function loadPets() {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
         .from("pets")
         .select("*")
         .order("id");
 
     if (error) {
         console.error("Chyba Supabase:", error);
+        document.getElementById("petsList").textContent =
+            "❌ Nepodařilo se načíst mazlíčky.";
         return;
     }
 
     console.log("Zvířata:", data);
+
+    document.getElementById("petsList").innerHTML = data.map(pet => `
+        <div style="
+            background:#1b263d;
+            padding:15px;
+            border-radius:12px;
+            margin-bottom:10px;
+        ">
+            <strong>${pet.name ?? "Bez jména"}</strong><br>
+            <span style="color:#9aa8c4;">
+                ${pet.type ?? "Bez druhu"}
+            </span>
+        </div>
+    `).join("");
 }
 
-loadPets();
-</script>
+function openPetsEditor() {
+    document.getElementById("petsEditor").style.display = "block";
+    loadPets();
+}
+
+async function addPet() {
+    const name = document.getElementById("petName").value.trim();
+    const type = document.getElementById("petType").value.trim();
+
+    if (!name) {
+        alert("Napiš jméno mazlíčka.");
+        return;
     }
 
-    console.log("Zvířata:", data);
-}
+    const { error } = await supabaseClient
+        .from("pets")
+        .insert({
+            name: name,
+            type: type
+        });
 
-loadPets();
+    if (error) {
+        console.error("Chyba při přidávání:", error);
+        alert("❌ Mazlíčka se nepodařilo přidat.");
+        return;
+    }
+
+    document.getElementById("petName").value = "";
+    document.getElementById("petType").value = "";
+
+    alert("✅ Mazlíček přidán!");
+    loadPets();
+}
 </script>
 
 </body>
